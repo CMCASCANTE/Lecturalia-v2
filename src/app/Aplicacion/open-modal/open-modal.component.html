@@ -1,0 +1,62 @@
+<div class="row">
+    <div class="col">
+        <div class="row modal-header">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-end">
+                        <button type="button" class="btn" (click)="activeModal.dismiss('Cross click')">X</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <h4 class="modal-title">{{book.title}} {{book.subtitle}}</h4>                
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="row modal-body">
+            <div class="col-3 text-center">
+                <a target="_blank" href="https://openlibrary.org/{{book.key}}">
+                    <figure>
+                        @if (book.cover_i==null) {
+                            <img width="100em" height="150em" src="../../../assets/images/avatar_book.png" alt="portada">
+
+                        } @else {
+                            <img width="100em" height="150em" src="https://covers.openlibrary.org/b/id/{{book.cover_i}}-M.jpg" alt="portada">
+                        }   
+                        <span>                    
+                            <figcaption>OpenLibrary Link</figcaption>
+                        </span>
+                    </figure>
+                </a>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col">                         
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Autor: {{book.author_name}}</p>
+                                <p>Publicación: {{book.first_publish_year}}</p>
+                            </div>
+                            <div class="col-6">
+                                <p>Idiomas: {{book.language}}</p>
+                                <p>Páginas: {{book.number_of_pages_median}}</p>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                <div class="row">
+                    <p>Categorias: {{book.subject}}</p> 
+                </div>
+            </div>
+        </div>
+        <div class="row modal-footer">
+            <div class="col text-end">
+                <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

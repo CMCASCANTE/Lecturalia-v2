@@ -1,0 +1,71 @@
+/***
+**** CSS Para elementos principales
+***/
+div {
+    margin: 0;
+}
+
+
+/** Cabecero de la página **/
+.header {
+    margin: 1.5em;
+    margin-top: 3em;
+}
+.header p {
+    font-weight: 100;
+    font-size: 2.5em;
+}
+
+
+
+/** Navegador principal **/
+.nav a {
+    color: #F56991;
+}
+.nav a.active {
+    color: black;
+    background-color: rgb(253, 246, 238);
+}
+.nav a:active {
+    background-color: transparent;
+}
+.action {
+    cursor: pointer;
+}
+
+
+
+/** Cuerpo de la web **/
+.body {
+    min-height: 30em;    
+}
+
+
+
+/** Pie de página **/
+.footer {
+    border-top: solid 1px #dee2e6;
+    max-width: 28em;
+    margin: auto;
+    text-align: end;
+}
+
+
+
+
+
+/** CSS para móviles **/
+
+@media (max-width: 470px) {   
+    .nav-item a {
+        padding: 0.5em;        
+    }
+    .login {
+        position: absolute;
+        right: 0em;
+        top: 0em;             
+    }        
+    .login a {
+        border: none;
+    }
+}

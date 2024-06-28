@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col">
+        <div class="row modal-header">
+            <div class="col">
+                <div class="row">
+                    <div class="col text-end">
+                        <button type="button" class="btn" (click)="activeModal.dismiss('Cross click')">X</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <h4 class="modal-title">{{book.volumeInfo.title}} {{book.volumeInfo.subtitle}}</h4>                
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <div class="row modal-body">
+            <div class="col-3 text-center">
+                <a target="_blank" href="{{book.volumeInfo.canonicalVolumeLink}}">
+                    <figure>
+                        @if (book.volumeInfo.imageLinks==null) {
+                            <img width="100em" height="150em" src="../../../assets/images/avatar_book.png" alt="portada">
+                        } @else {
+                            <img width="100em" height="150em" src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="portada">
+                        }
+                        <span>                    
+                            <figcaption>GoogleBooks Link</figcaption>
+                        </span>
+                    </figure>
+                </a>
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>Autor: {{book.volumeInfo.authors}}</p>
+                                <p>Publicación: {{book.volumeInfo.publishedDate}}</p>
+                            </div>
+                            <div class="col-6">
+                                <p>Idiomas: {{book.volumeInfo.language}}</p>
+                                <p>Páginas: {{book.volumeInfo.pageCount}}</p>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+                <div class="row">
+                    <p>Categorias: {{book.volumeInfo.categories}}</p>                                                     
+                    <p class="cortarTexto">{{book.volumeInfo.description}}</p>                                                   
+                </div>
+            </div>
+        </div>
+        <div class="row modal-footer">
+            <div class="col text-end">
+                <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

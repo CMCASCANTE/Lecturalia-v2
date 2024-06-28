@@ -1,0 +1,112 @@
+<div class="row">
+    <div class="col">
+
+        <!-- Buscador -->
+        <div class="row justify-content-center search" [formGroup]="searchFormGroup">
+            <div class="col-10 col-sm-6 col-md-5 col-lg-4 col-xl-3">             
+                <div class="inputs">
+                    <input class="form-control" (keyup.enter)="FirstPage()" type="text" placeholder="Título" id="title" formControlName="titleForm">    
+                    <input class="form-control" (keyup.enter)="FirstPage()" type="text" placeholder="Autor" id="autor" formControlName="autorForm">  
+                </div>
+                <div class="input-group">
+                    <button class="btn btn-outline-secondary" (click)="FirstPage()" type="button">Buscar</button>
+                    <select #biblioteca class="form-select" id="select" form="select" formControlName="selectForm">
+                        @for (item of bibliotecas; track $index) {
+                            <option value="{{item.biblioteca}}">{{item.biblioteca}}</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+        
+
+
+        <!-- Resultados -->
+        <div class="row blockResults">
+            <div class="col">
+                <!-- Paginado -->
+                <div #paginado1 class="row paginado noVisible">  
+                    <div class="col-12 col-md-10 col-lg-10 col-xl-8 m-auto text-end">
+                        <button class="pagButton" (click)="this.pageDown()"><<</button>
+                        <button disabled="disabled">{{this.actualBook==0?1:this.actualBook+1}} ...{{this.actualBook+this.books.length}} /{{this.nBooks}}</button>
+                        <button class="pagButton" (click)="this.pageUp()">>></button>
+                    </div>  
+                </div>
+                
+
+
+                <!-- Loading y mensajes  -->
+                <div #loading class="row loading noVisible">
+                    <div class="col spinner">
+                        <div class="dot1"></div>
+                        <div class="dot2"></div>
+                    </div>
+                </div>
+                <div #message class="row message noVisible">
+                    <div class="col text-center">
+                        <span></span>
+                    </div>
+                </div>
+
+
+
+                <!-- Resultados -->
+                <div #results class="row results noVisible">                       
+                    <div class="col-12 col-md-10 col-lg-10 col-xl-8 m-auto">
+                        <div class="row book justify-content-center">
+                        @for (book of this.books; track book.title) {
+                            
+                            @if (select=="GoogleBooks") {
+                                
+                                    <div class="col-4 col-sm-auto m-3">                                        
+                                        @if (book.volumeInfo.imageLinks==null) {
+                                            <img src="../../../assets/images/avatar_book.png" alt="portada" (click)="googleModal(book)">
+                                        } @else {
+                                            <img src="{{book.volumeInfo.imageLinks.thumbnail}}" alt="portada" (click)="googleModal(book)">
+                                        }                                        
+                                        <span>                                        
+                                            {{book.volumeInfo.title}} {{book.volumeInfo.subtitle}}
+                                        </span>
+                                    </div>
+                                
+                            } @else if (select=="OpenLibrary"){
+
+                                    <div class="col-auto m-3">                                       
+                                        @if (book.cover_i==null) {
+                                            <img src="../../../assets/images/avatar_book.png" alt="portada" (click)="openModal(book)">
+
+                                        } @else {
+                                            <img src="https://covers.openlibrary.org/b/id/{{book.cover_i}}-M.jpg" alt="portada" (click)="openModal(book)">
+                                        }                                           
+                                        <span>
+                                            {{book.title}} {{book.subtitle}}
+                                        </span>
+                                    </div>
+
+                            }                            
+                        }  
+                        </div>                                
+                    </div>
+                </div>
+
+
+
+                <!-- Paginado -->
+                <div #paginado2 class="row paginado noVisible">
+                    <div class="col-12 col-md-10 col-lg-10 col-xl-8 m-auto text-end">
+                        <button class="pagButton" (click)="this.pageDown()"><<</button>
+                        <button disabled="disabled">{{this.actualBook==0?1:this.actualBook+1}} ...{{this.actualBook+this.books.length}} /{{this.nBooks}}</button>
+                        <button class="pagButton" (click)="this.pageUp()">>></button>
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>

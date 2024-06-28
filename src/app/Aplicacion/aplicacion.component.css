@@ -1,0 +1,250 @@
+/***
+**** CSS Genérico
+***/ 
+
+/** Hacer elementos no visibles **/
+.noVisible {
+    display: none;
+}
+
+
+/** CSS Buscador **/
+.search {
+    margin: 2em;
+}
+
+/** CSS Bloque de resultados  **/
+.blockResults {    
+    min-height: 40em;    
+}
+
+/** CSS De los inputs del buscador **/
+input, div.input-group {
+    margin: 1em;
+}
+input::placeholder {
+    color: #FFB485;
+}
+#title, #autor {
+    border-color: #FFB485;    
+}
+#title:focus, #autor:focus {    
+    box-shadow: 0 0 0 0.25rem #FFB485;    
+}
+div.input-group select {
+    background-color: #FFB485; 
+    border-color: #FFB485;
+}
+div.input-group select:focus {
+    box-shadow: none;
+}
+div.input-group button {
+    background-color: white;
+    color: #FFB485;
+    border-color: #FFB485;
+}
+div.input-group button:hover {
+    background-color: #FFB485;
+    color: antiquewhite;
+    border: 1px solid antiquewhite;
+    animation: grow;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+} 
+div.input-group button:active {
+    animation: grow;    
+}
+@keyframes grow {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+
+
+
+/** CSS del Paginado **/
+.paginado {
+    margin-right: 1em;
+}
+.paginado button {
+    padding: 0.4em;
+    padding-left: 0.7em;
+    padding-right: 0.7em;    
+    background-color: transparent;
+    color: #F56991;
+    border: none;
+    font-size: 1.2em;
+}
+.paginado button.pagButton:hover {
+    animation: grow;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;    
+    color: black;
+}
+.paginado button.pagButton:active {
+    animation: grow;    
+}
+
+
+
+/** CSS Div para mensajes **/
+.message {
+    color: #F56991;
+}
+
+
+
+
+
+
+/***
+**** CSS Para la presentación de los libros
+***/
+.book {    
+    margin: 0.5em;
+    overflow-wrap:break-word;    
+}
+.book img {
+    margin: 0.5em;
+    margin-bottom: 0;
+    width: 7em;
+    height: 11em;    
+    box-shadow: 0.1em 0.2em 0.2em grey;
+}
+.book img:hover {
+    animation: grow;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+    cursor: pointer;
+}
+.book img:active {
+    animation: grow;
+    animation-duration: 0.1s;
+    animation-fill-mode: backwards;
+}
+.book span {    
+    width: 7em;
+    height: 4.5em;
+    display:table-caption;
+    margin-left: 0.5em;
+    text-align: center;
+    transform: scale(0.9);    
+    overflow: auto;
+}
+.book a {
+    text-decoration: none;
+}
+.book svg {
+    width: 0.9em;
+    height: 0.9em;
+}
+
+.cortarTexto {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    
+}
+
+
+
+/***
+**** CSS para el Loading
+***/
+.spinner {
+    margin: 100px auto;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    text-align: center;
+    
+    -webkit-animation: sk-rotate 2.0s infinite linear;
+    animation: sk-rotate 2.0s infinite linear;
+}  
+.dot1, .dot2 {
+    width: 60%;
+    height: 60%;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    background-color: #F56991;
+    border-radius: 100%;
+
+    -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2.0s infinite ease-in-out;
+}  
+.dot2 {
+    top: auto;
+    bottom: 0;
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}  
+@-webkit-keyframes sk-rotate { 100% { -webkit-transform: rotate(360deg) }}
+@keyframes sk-rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+@-webkit-keyframes sk-bounce {
+0%, 100% { -webkit-transform: scale(0.0) }
+50% { -webkit-transform: scale(1.0) }
+}  
+@keyframes sk-bounce {
+0%, 100% { 
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+} 50% { 
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+}
+}
+
+
+/** CSS para las ventanas modales **/
+::ng-deep .modalCSS {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow-y: auto;
+    min-height: calc(100vh - 60px);
+    max-width: 60%;
+    overflow: hidden;        
+}
+@media (max-width: 767px) {
+    ::ng-deep .modalCSS {
+      min-height: calc(100vh - 20px);
+    }
+}
+::ng-deep .modal-content {
+    background-color: antiquewhite;
+}
+
+::ng-deep .modal-content h4 {    
+    font-weight: 300;
+    font-size: 2em;
+}
+
+::ng-deep .modalCSS .cortarTexto {
+    max-height: 10em;
+    overflow: auto;
+}
+
+::ng-deep .modalCSS button {
+    background-color: white;
+    color: #F56991;
+    border-color: #F56991;
+}
+::ng-deep .modalCSS button:hover {
+    background-color: #F56991;
+    border-color: #F56991;
+    color: black;    
+} 
+
+::ng-deep .modalCSS a {
+    color: #F56991;
+}
+::ng-deep .modalCSS a:hover {
+    color: black;
+}
+
+

@@ -1,0 +1,43 @@
+/**
+**  CSS Para la frase introductoria al login
+**/
+.loginPhrase {
+    margin: auto;
+    margin-top: 3em;
+}
+
+
+/**
+**  CSS Para el boton de login
+**/
+.loginButton {
+    margin: auto;
+    margin-top: 1em;
+}
+  
+.loginButton button {
+    background-color: white;
+    color: #FFB485;
+    border-color: #FFB485;
+    width: 10em;
+    height: 3em;
+}
+.loginButton button:hover {
+    background-color: #FFB485;
+    color: black;
+    animation: grow;
+    animation-duration: 0.1s;
+    animation-fill-mode: forwards;
+} 
+.loginButton button:active {
+    animation: grow;    
+}
+@keyframes grow {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}
+  

@@ -1,0 +1,74 @@
+<!-- Cabecero de la página -->
+<div class="row header justify-content-center">
+  <p class="col-auto text-center">La web de Karlos</p>
+</div>
+
+
+
+<!-- Navegador -->
+<div class="row justify-content-center nav">  
+  <!-- Estilo de Navegador Bootstrap - Tabs with dropdowns -->  
+  <ul #navList class="col-auto nav nav-tabs">     
+    <li class="nav-item">
+      <a class="nav-link" (click)="activMenu($event)" aria-current="page" routerLink="/inicio">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="activMenu($event)" aria-current="page" routerLink="/aplicacion">Buscador</a>
+    </li>    
+    <li class="nav-item dropdown">
+      <a #dropList class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Biblioteca</a>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" (click)="activSubMenu()" routerLink="/subMenu">Submenu</a></li>
+        <li><a class="dropdown-item" (click)="activSubMenu()" routerLink="/subMenu2">SubMenu 2</a></li>
+        <ng-container *ngIf="auth.isAuthenticated$ | async;">
+          <li><a class="dropdown-item action" (click)="action()">Action</a></li>
+        </ng-container>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" (click)="activSubMenu()" routerLink="/subMenuExtra">SubMenu Extra</a></li>
+      </ul>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" (click)="activMenu($event)" aria-current="page" routerLink="/contacto">Contacto</a>
+    </li>
+    <li class="nav-item login">
+      <ng-container *ngIf="auth.user$ | async as user; else login">        
+        <a class="nav-link" (click)="activMenu($event)" aria-current="page" routerLink="/login">
+          @if (user.picture) {
+            <img width="22em" height="22em" src="{{ user.picture }}" alt="">          
+          } @else {
+            Login
+          }      
+        </a>  
+      </ng-container>
+      <ng-template #login>
+        <a class="nav-link" (click)="activMenu($event)" aria-current="page" routerLink="/login">Login</a>
+      </ng-template>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Cuerpo de la web -->
+<div class="row body">
+  <div class="col">
+    <!-- Cargador de los Componentes enrutados -->
+    <router-outlet></router-outlet>
+  </div>  
+</div>
+
+
+
+<!-- Pie de la página -->
+<div class="row footer">
+  <div class="col">    
+    <p>Web en construcción...</p>
+  </div>  
+</div>

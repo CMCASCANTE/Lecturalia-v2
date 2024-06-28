@@ -1,0 +1,13 @@
+.section {
+    width: 30em;
+    margin: auto;
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+.section p {
+    margin-top: 3em;
+    margin-bottom: 1em;
+}
+.section h1 {
+    text-align: center;
+}
